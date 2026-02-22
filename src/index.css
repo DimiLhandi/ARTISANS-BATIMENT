@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-concrete: #5C6670;
+  --color-safety-yellow: #F2A900;
+  --color-mineral-bg: #F4F4F4;
+  --color-ink: #1F1F1F;
+
+  --font-akkurat: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  --spacing-base: 8px;
+}
+
+@layer base {
+  body {
+    @apply bg-mineral-bg text-ink font-akkurat text-[14px] antialiased;
+  }
+
+  h1, h2 {
+    @apply text-[53px] font-bold uppercase tracking-tighter leading-none;
+  }
+
+  button {
+    @apply cursor-pointer transition-all duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-safety-yellow text-ink px-8 py-4 font-bold uppercase tracking-widest hover:opacity-90 transition-colors;
+    border-radius: 0px;
+  }
+
+  .nav-link {
+    @apply relative py-2 hover:text-safety-yellow transition-colors;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[2px] bg-safety-yellow transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .card {
+    @apply bg-white p-8 shadow-sm hover:shadow-md transition-shadow;
+    border-radius: 0px;
+  }
+
+  .input-field {
+    @apply w-full p-4 bg-white border border-concrete/20 focus:border-safety-yellow outline-none transition-colors;
+    border-radius: 0px;
+  }
+}
+
+/* Custom animations */
+@keyframes letter-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
